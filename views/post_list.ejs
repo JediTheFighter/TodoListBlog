@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Posts</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+  <header>
+    <h1>View Posts</h1>
+  </header>
+  <main>
+    <section class="post-list">
+  <% if (locals.posts && locals.posts.length > 0) { %>
+    <ul>
+      <% for (let i = 0; i < locals.posts.length; i++) { %>
+        <li>
+          <h3><a href="/post/<%= locals.posts[i].id %>"><%= locals.posts[i].title %></a></h3>
+          <p><%= locals.posts[i].content %></p>
+        </li>
+      <% } %>
+    </ul>
+  <% } else { %>
+    <p>No posts available.</p>
+  <% } %>
+</section>
+  </main>
+</body>
+</html>
