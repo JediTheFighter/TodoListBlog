@@ -1,29 +1,26 @@
 import express from 'express';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 import bodyParser from 'body-parser'; 
 import serverless from 'serverless-http';
 
+const posts = [
+  { id: '1', title: 'First Post', content: 'This is the content of the first post.' },
+  { id: '2', title: 'Second Post', content: 'This is the content of the second post.' },
+  // Add more posts as needed
+];
+
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const port = 3000;
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
-app.set('views', join(__dirname, 'views'));
 
 // Serve static files
-app.use(express.static(join(__dirname, 'public')));
+app.use(express.static("public"));
 // Use body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Include posts
-import { posts } from './posts.js';
+
 
 app.use((req, res, next) => {
-    
-  
     // Set the 'posts' variable in res.locals
     res.locals.posts = posts;
   
@@ -74,9 +71,6 @@ app.get('/post/:id', (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
 
 app.use('/.netlify/functions/api', express.Router());
 module.exports.handler = serverless(app);
