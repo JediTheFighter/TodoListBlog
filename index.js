@@ -23,8 +23,8 @@ app.set('view engine', 'ejs');
 // Set the views directory
 app.set('views', join(__dirname, 'views'));
 
-// Serve static files
-app.use(express.static("public"));
+// Serve static files from the public directory
+app.use(express.static(join(__dirname, 'public')));
 // Use body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 
