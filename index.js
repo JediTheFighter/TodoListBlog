@@ -1,6 +1,5 @@
 import express from 'express';
 import bodyParser from 'body-parser'; 
-import serverless from 'serverless-http';
 import path from 'path';
 
 const posts = [
@@ -11,9 +10,12 @@ const posts = [
 
 const app = express();
 const router = express.Router();
+const port = process.env.PORT || 3000;
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
+// Set the views directory
+app.set('views', path.join(__dirname, 'views'));
 
 // Serve static files
 app.use(express.static("public"));
@@ -73,6 +75,6 @@ router.get('/post/:id', (req, res) => {
   }
 });
 
-
-app.use("/.netlify/functions/api/", router);
-export const handler = serverless(app);
+app.listen(port, () => {
+  console.log(`Server is running at port: ${port}`);
+});

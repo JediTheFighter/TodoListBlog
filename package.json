@@ -8,10 +8,9 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "node functions/api.js",       
+    "start": "node index.js",       
     "prebuild": "npm install",          
-    "build": "npm run build", 
-    "test": "jest"
+    "build": "npm run build"
   },
   "keywords": [],
   "author": "",
@@ -20,10 +19,6 @@
     "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
     "esm": "^3.2.25",
-    "express": "^4.18.2",
-    "serverless-http": "^2.7.0"
-  },
-  "devDependencies": {
-    "netlify-cli": "^17.5.1"
+    "express": "^4.18.2"
   }
 }
