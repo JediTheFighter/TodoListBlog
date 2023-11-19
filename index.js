@@ -1,6 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser'; 
-import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+// Get the current file URL
+const __filename = fileURLToPath(import.meta.url);
+
+// Get the directory name
+const __dirname = dirname(__filename);
 
 const posts = [
   { id: '1', title: 'First Post', content: 'This is the content of the first post.' },
@@ -9,13 +16,12 @@ const posts = [
 ];
 
 const app = express();
-const router = express.Router();
 const port = process.env.PORT || 3000;
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
 // Set the views directory
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', join(__dirname, 'views'));
 
 // Serve static files
 app.use(express.static("public"));
@@ -34,17 +40,17 @@ app.use((req, res, next) => {
   
 
 // Home route
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
   res.render('index', { posts });
 });
 
 // Create post route (form)
-router.get('/create', (req, res) => {
+app.get('/create', (req, res) => {
     res.render('create');
 });
   
 // Post route (handling form submission)
-router.post('/create', (req, res) => {
+app.post('/create', (req, res) => {
   const { title, content } = req.body;
 
   // Assuming posts have unique IDs (e.g., generated with UUID)
@@ -58,12 +64,12 @@ router.post('/create', (req, res) => {
 });
 
 // View posts route
-router.get('/view', (req, res) => {
+app.get('/view', (req, res) => {
     res.render('post_list', { posts });
 });
 
 // Post route
-router.get('/post/:id', (req, res) => {
+app.get('/post/:id', (req, res) => {
   const postId = req.params.id;
   console.log("postID "+ postId+ " \n posts: "+posts);
   const post = posts.find(post => post.id === postId);
