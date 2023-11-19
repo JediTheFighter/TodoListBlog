@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser'; 
 import serverless from 'serverless-http';
+import path from 'path';
 
 const posts = [
   { id: '1', title: 'First Post', content: 'This is the content of the first post.' },
@@ -9,6 +10,7 @@ const posts = [
 ];
 
 const app = express();
+const router = express.Router();
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
@@ -30,36 +32,36 @@ app.use((req, res, next) => {
   
 
 // Home route
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
   res.render('index', { posts });
 });
 
 // Create post route (form)
-app.get('/create', (req, res) => {
+router.get('/create', (req, res) => {
     res.render('create');
 });
   
 // Post route (handling form submission)
-app.post('/create', (req, res) => {
-const { title, content } = req.body;
+router.post('/create', (req, res) => {
+  const { title, content } = req.body;
 
-// Assuming posts have unique IDs (e.g., generated with UUID)
-const newPost = { id: Math.random().toString(), title, content };
+  // Assuming posts have unique IDs (e.g., generated with UUID)
+  const newPost = { id: Math.random().toString(), title, content };
 
-// Add the new post to the array (or save it to a database)
-posts.push(newPost);
+  // Add the new post to the array (or save it to a database)
+  posts.push(newPost);
 
-// Redirect to the home page after creating the post
-res.redirect('/');
+  // Redirect to the home page after creating the post
+  res.redirect('/');
 });
 
 // View posts route
-app.get('/view', (req, res) => {
+router.get('/view', (req, res) => {
     res.render('post_list', { posts });
 });
 
 // Post route
-app.get('/post/:id', (req, res) => {
+router.get('/post/:id', (req, res) => {
   const postId = req.params.id;
   console.log("postID "+ postId+ " \n posts: "+posts);
   const post = posts.find(post => post.id === postId);
@@ -72,5 +74,5 @@ app.get('/post/:id', (req, res) => {
 });
 
 
-app.use('/.netlify/functions/api', express.Router());
-module.exports.handler = serverless(app);
+app.use("/.netlify/functions/api/", router);
+export const handler = serverless(app);
