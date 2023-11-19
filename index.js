@@ -21,7 +21,7 @@ const port = process.env.PORT || 3000;
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
 // Set the views directory
-// app.set('views', join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 
 // Serve static files
 app.use(express.static("public"));
