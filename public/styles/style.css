@@ -109,18 +109,7 @@ button:hover {
   margin-top: 10px;
 }
 
-.edit-button {
-  display: inline-block;
-  margin-right: 10px; /* Adjust the margin for spacing between buttons */
-  padding: 5px 2px;
-  text-decoration: none;
-  color: #fff;
-  border-radius: 3px;
-  width: 60px; /* Set a specific width for both buttons */
-  font-size: 14px;
-  text-align: center; /* Center the text within the button */
-
-}
+.edit-button,
 .delete-button {
   display: inline-block;
   margin-right: 10px; /* Adjust the margin for spacing between buttons */
@@ -146,10 +135,6 @@ button:hover {
 }
 
 .delete-form {
-  display: inline; /* Ensure the form is displayed inline */
-}
-
-.edit-form {
   display: inline; /* Ensure the form is displayed inline */
 }
 
