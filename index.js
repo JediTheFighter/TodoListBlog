@@ -90,7 +90,7 @@ app.post('/update/:id', (req, res) => {
 });
 
 // Edit route
-app.get('/edit/:id', (req, res) => {
+app.post('/edit/:id', (req, res) => {
   const postId = parseInt(req.params.id, 10);
   
   // Find the index of the post with the specified id
