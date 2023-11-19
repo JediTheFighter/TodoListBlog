@@ -11,6 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const posts = [
+  {id: '1', title: 'Sample Blog', content: 'Sample Content'}
   // Add more posts as needed
 ];
 

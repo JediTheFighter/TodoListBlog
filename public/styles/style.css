@@ -49,9 +49,13 @@ a:hover {
   background-color: #004080;
 }
 
-.create-form,
-.post-list {
+.create-form {
   margin-top: 2em;
+}
+
+.post-list {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 form {
@@ -109,17 +113,41 @@ button:hover {
   margin-top: 10px;
 }
 
+.post-item {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  position: relative;
+}
+
+.actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align buttons to the right */
+}
+
+.edit-form,
+.delete-form {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align buttons to the right */
+}
+
 .edit-button,
 .delete-button {
-  display: inline-block;
-  margin-right: 10px; /* Adjust the margin for spacing between buttons */
-  padding: 5px 10px;
-  text-decoration: none;
+  background-color: #3498db;
   color: #fff;
+  padding: 5px;
+  border: none;
   border-radius: 3px;
-  width: 60px; /* Set a specific width for both buttons */
-  font-size: 14px;
-  text-align: center; /* Center the text within the button */
+  cursor: pointer;
+  margin-bottom: 5px;
 }
 
 .edit-button {

@@ -25,20 +25,24 @@
   <% if (locals.posts && locals.posts.length > 0) { %>
     <ul>
       <% for (let i = 0; i < locals.posts.length; i++) { %>
-        <li>
+        <li class="post-item">
           <h3><a href="/post/<%= locals.posts[i].id %>"><%= locals.posts[i].title %></a></h3>
           <p><%= locals.posts[i].content %></p>
 
-         <!-- Edit and Delete Buttons -->
-         <div class="post-options">
-          <a href="/edit/<%= locals.posts[i].id %>" class="edit-button">Edit</a>
-          
-          <!-- Delete Form with Confirmation -->
-          <form action="/delete/<%= locals.posts[i].id %>" method="post" class="delete-form">
-            <input type="hidden" name="_method" value="DELETE">
-            <button type="button" class="delete-button" onclick="confirmDelete('<%= locals.posts[i].id %>')">Delete</button>
-          </form>
-        </div>
+          <!-- Edit and Delete Form -->
+          <div class="actions">
+            <!-- Edit Form -->
+            <form action="/update/<%= locals.posts[i].id %>" method="post" class="edit-form">
+              <input type="hidden" name="_method" value="PUT">
+              <button type="submit" class="edit-button">Edit</button>
+            </form>
+
+            <!-- Delete Form with Confirmation -->
+            <form action="/delete/<%= locals.posts[i].id %>" method="post" class="delete-form">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="button" class="delete-button" onclick="confirmDelete('<%= locals.posts[i].id %>')">Delete</button>
+            </form>
+          </div>
         </li>
         </li>
       <% } %>
