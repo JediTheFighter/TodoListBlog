@@ -26,8 +26,10 @@
     <ul>
       <% for (let i = 0; i < locals.posts.length; i++) { %>
         <li class="post-item">
-          <h3><a href="/post/<%= locals.posts[i].id %>"><%= locals.posts[i].title %></a></h3>
-          <p><%= locals.posts[i].content %></p>
+          <div class="post-content">
+            <h3><a href="/post/<%= locals.posts[i].id %>"><%= locals.posts[i].title %></a></h3>
+            <p><%= locals.posts[i].content %></p>
+          </div>
 
           <!-- Edit and Delete Form -->
           <div class="actions">

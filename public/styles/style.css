@@ -19,6 +19,7 @@ main {
   padding: 1em;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 a {
@@ -51,11 +52,6 @@ a:hover {
 
 .create-form {
   margin-top: 2em;
-}
-
-.post-list {
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 form {
@@ -113,27 +109,34 @@ button:hover {
   margin-top: 10px;
 }
 
+.post-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .post-item {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 1px solid #ddd;
-  padding: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
   position: relative;
 }
 
 .actions {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  justify-content: flex-start; /* Align buttons to the right */
   display: flex;
-  flex-direction: column;
-  align-items: flex-end; /* Align buttons to the right */
+  margin-top: 10px;
+}
+
+.post-content {
+  flex: 1; /* Allow content to take remaining space */
 }
 
 .edit-form,
 .delete-form {
-  position: absolute;
   top: 10px;
   right: 10px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-end; /* Align buttons to the right */
@@ -143,7 +146,7 @@ button:hover {
 .delete-button {
   background-color: #3498db;
   color: #fff;
-  padding: 5px;
+  padding: 5px 10px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -158,8 +161,13 @@ button:hover {
   background-color: #e74c3c; /* Red color, adjust as needed */
 }
 
-.edit-button:hover, .delete-button:hover {
+.edit-button:hover {
   filter: brightness(1.2); /* Brighten on hover */
+}
+
+.delete-button:hover {
+  filter: brightness(1.2);
+  background-color: #981001; /* Darker red on hover */
 }
 
 .delete-form {
@@ -195,8 +203,4 @@ button {
   border: none;
   border-radius: 3px;
   cursor: pointer;
-}
-
-button:hover {
-  background-color: #2980b9;
 }
